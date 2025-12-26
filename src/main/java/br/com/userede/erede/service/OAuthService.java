@@ -22,7 +22,13 @@ import br.com.userede.erede.eRede;
 
 public class OAuthService {
 	
-	public String generateAccessToken(OAuthStore store) {
+	private OAuthStore store;
+
+	public OAuthService(OAuthStore store) {
+		this.store = store;
+	}
+	
+	public String generateAccessToken() {
 	    
 		// Base64(clientId:clientSecret)
 	    String clientId = store.getClientId();

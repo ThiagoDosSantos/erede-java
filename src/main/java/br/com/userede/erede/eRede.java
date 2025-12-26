@@ -1,12 +1,11 @@
 package br.com.userede.erede;
 
+import java.util.logging.Logger;
+
 import br.com.userede.erede.service.CancelTransactionService;
 import br.com.userede.erede.service.CaptureTransactionService;
 import br.com.userede.erede.service.CreateTransactionService;
 import br.com.userede.erede.service.GetTransactionService;
-import br.com.userede.erede.service.OAuthService;
-
-import java.util.logging.Logger;
 
 public class eRede {
 
@@ -28,13 +27,7 @@ public class eRede {
 
     public TransactionResponse authorize(Transaction transaction) {
         return create(transaction);
-    }
-    
-    /**Returns a new access_token*/
-    public String generateAccessToken(OAuthStore oAuthStore) {
-    	OAuthService oAuthService = new OAuthService(); 
-    	return oAuthService.generateAccessToken(oAuthStore);
-    }
+    }   
 
     public TransactionResponse create(Transaction transaction) {
         CreateTransactionService createTransactionService = new CreateTransactionService(store,

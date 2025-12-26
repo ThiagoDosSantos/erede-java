@@ -13,8 +13,9 @@ public class OAuthStore {
         this.environment = environment;
     }
 
-    public OAuthStore(String filiation, String token) {
-        this(filiation, token, OAuthEnvironment.production());
+    /**Constructs production OAuthStore*/
+    public OAuthStore(String clientId, String clientSecret) {
+        this(clientId, clientSecret, OAuthEnvironment.production());
     }
 
     public OAuthEnvironment getEnvironment() {

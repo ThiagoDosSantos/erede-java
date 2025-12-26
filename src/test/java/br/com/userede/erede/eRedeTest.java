@@ -2,7 +2,6 @@ package br.com.userede.erede;
 
 import java.util.Date;
 
-import br.com.userede.erede.service.OAuthService;
 import junit.framework.TestCase;
 
 public class eRedeTest extends TestCase {
@@ -14,9 +13,11 @@ public class eRedeTest extends TestCase {
     public void setUp() {
     	
     	// novo: obtendo access token
-    	OAuthService oAuthService = new OAuthService();    	
     	oAuthStore = new OAuthStore("36046288", "3cf40bfefad642d788c4a2721c0a0b11", OAuthEnvironment.sandbox());
-    	String accessToken = oAuthService.generateAccessToken(oAuthStore);
+    	
+    	OAuthRede oAuthRede = new OAuthRede(oAuthStore);
+    	
+    	String accessToken = oAuthRede.generateAccessToken();
     	
     	// Configuração da loja
     	store = new Store("36046288", accessToken, Environment.sandbox());
@@ -210,8 +211,8 @@ public class eRedeTest extends TestCase {
     }
     
     public void testShouldGenerateAccessToken() {
-    	OAuthService oAuthService = new OAuthService();    	
-    	String accessToken = oAuthService.generateAccessToken(oAuthStore);
+    	OAuthRede oAuthRede = new OAuthRede(oAuthStore);
+    	String accessToken = oAuthRede.generateAccessToken();
     	assertNotNull(accessToken);
     }
 }
