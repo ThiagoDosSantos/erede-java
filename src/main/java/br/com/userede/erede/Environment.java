@@ -5,8 +5,8 @@ import com.google.gson.annotations.SerializedName;
 public class Environment {
 
     private static final String PRODUCTION = "https://api.userede.com.br/erede";
-    private static final String SANDBOX = "https://api.userede.com.br/desenvolvedores";
-    private static final String VERSION = "v1";
+    private static final String SANDBOX = "https://sandbox-erede.useredecloud.com.br";
+    private static final String VERSION = "v2";
 
     @SerializedName("ip")
     private String ip;

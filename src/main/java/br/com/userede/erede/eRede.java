@@ -4,12 +4,13 @@ import br.com.userede.erede.service.CancelTransactionService;
 import br.com.userede.erede.service.CaptureTransactionService;
 import br.com.userede.erede.service.CreateTransactionService;
 import br.com.userede.erede.service.GetTransactionService;
+import br.com.userede.erede.service.OAuthService;
 
 import java.util.logging.Logger;
 
 public class eRede {
 
-    public static final String VERSION = "1.2.0";
+    public static final String VERSION = "1.3.0";
     public static final String ARTIFACT_ID = "br.com.userede.erede";
     public static final String USER_AGENT = "eRede/" + eRede.VERSION + " (Java; %s)";
 
@@ -27,6 +28,12 @@ public class eRede {
 
     public TransactionResponse authorize(Transaction transaction) {
         return create(transaction);
+    }
+    
+    /**Returns a new access_token*/
+    public String generateAccessToken(OAuthStore oAuthStore) {
+    	OAuthService oAuthService = new OAuthService(); 
+    	return oAuthService.generateAccessToken(oAuthStore);
     }
 
     public TransactionResponse create(Transaction transaction) {

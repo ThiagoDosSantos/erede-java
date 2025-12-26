@@ -3,17 +3,17 @@ package br.com.userede.erede;
 public class Store {
 
     private Environment environment;
-    private String filiation;
-    private String token;
+    private String filiation; // clientId
+    private String accessToken; // temporary access_token
 
-    public Store(String filiation, String token, Environment environment) {
-        this.environment = environment;
-        this.filiation = filiation;
-        this.token = token;
+    public Store(String filiation, String accessToken, Environment environment) {
+    	this.filiation = filiation;
+    	this.accessToken = accessToken;
+		this.environment = environment;
     }
 
-    public Store(String filiation, String token) {
-        this(filiation, token, Environment.production());
+    public Store(String filiation, String accessToken) {
+        this(filiation, accessToken, Environment.production());
     }
 
     public Environment getEnvironment() {
@@ -33,13 +33,12 @@ public class Store {
         this.filiation = filiation;
         return this;
     }
-
-    public String getToken() {
-        return token;
-    }
-
-    public Store setToken(String token) {
-        this.token = token;
-        return this;
-    }
+    
+    public String getAccessToken() {
+		return accessToken;
+	}
+    
+    public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
+	}
 }
